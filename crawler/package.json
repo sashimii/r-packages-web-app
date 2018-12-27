@@ -1,0 +1,19 @@
+{
+  "name": "r-repo-viewer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "tar": "^4.4.8",
+    "tar-stream": "^1.6.2"
+  },
+  "devDependencies": {
+    "dotenv": "^6.2.0"
+  }
+}
