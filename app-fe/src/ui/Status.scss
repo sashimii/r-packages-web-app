@@ -1,0 +1,36 @@
+@import '../scss/framework';
+
+$block: 'status';
+
+.#{$block} {
+  padding: 0.350rem 0.75rem; 
+
+  &__text {
+    font-weight: 300;
+    font-size: 0.85rem;
+  }
+
+
+  &--green {
+    background: $green;
+    color: white;
+  }
+
+  &--yellow {
+    background: $yellow;
+    color: white;
+  }
+
+  &--orange {
+    background: $orange;
+    color: white;
+  }
+
+  &--red {
+    background: $red;
+    color: white;
+  }
+
+
+
+}

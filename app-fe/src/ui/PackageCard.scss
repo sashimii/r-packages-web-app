@@ -1,0 +1,42 @@
+@import '../scss/framework';
+
+$block: 'package-card';
+
+.#{$block} {
+  width: 100%;
+  display: block;
+  float: left;
+  // padding: 2rem;
+
+  h2, h3, p {
+    width: 100%;
+    float: left;
+    display: block;
+    margin: 0.75rem 0;
+  }
+  &__button-container {
+    width: 100%;
+    float: left;
+    padding: 1rem 0;
+  }
+  &--padded {
+    padding: 2rem;
+    float: left;
+  }
+  
+  &__name {
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+  &__title {
+    font-weight: 200;
+    font-size: 1.25rem;
+  }
+
+  &__text {
+    font-weight: 300;
+    font-size: 1rem;
+  }
+
+
+}

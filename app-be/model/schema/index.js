@@ -1,69 +1,68 @@
-const { Schema } = require('mongoose');
+const Sequelize = require('sequelize');
+const db = require('../db');
 
-/**
- * Schemas only define what's required by user stories
- */
-
-/**
- * Author
- */
-const AuthorSchema = new Schema({
+const Author = db.define('author', {
+  id: {
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
+  },
   name: {
-    type: String,
-    unique: true, // Assuming there aren't more than one Bob Smiths in academia 
+    type: Sequelize.STRING,
+    unique: true,
+    allowNull: false,
   },
   email: {
-    type: String,
-    unique: true, 
+    type: Sequelize.STRING,
   },
   isMaintainer: {
-    type: Boolean,
-    default: false,
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
   },
   isContact: {
-    type: Boolean,
-    default: false,
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
   },
-  packagesAuthored: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Package',
-    }
-  ]
+
 });
 
+const PackageAuthorships = db.define('packageAuthorships', {});
 
-/**
- * Package
- * 
- * Ideally, dependencies would refer to other packages
- * if all of the packages were indexed for future reference,
- * but currently we're working with the idea that this solution 
- * works with at least 500 packages so an array of strings
- * will have to do.
- */
-
-const PackageSchema = new Schema({
-  package: {
-    type: String,
+const Package = db.define('package', {
+  id: {
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
+  },
+  name: {
+    type: Sequelize.STRING,
     unique: true,
   },
-  title: String,
-  version: String,
-  authors: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Author'
-    }
-  ],
-  license: String,
-  depends: [String],
-  suggests: [String],
-  imports: [String]
+  title: Sequelize.TEXT,
+  version: Sequelize.STRING,
+  license: Sequelize.STRING,
+  depends: Sequelize.ARRAY(Sequelize.STRING),
+  suggests: Sequelize.ARRAY(Sequelize.STRING),
+  imports: Sequelize.ARRAY(Sequelize.STRING),
+});
+
+Author.belongsToMany(Package, {
+  through: 'PackageAuthorships'
+});
+
+Package.belongsToMany(Author, {
+  through: 'PackageAuthorships'
 });
 
 
+const syncDB = async () => {
+  const syncedDB = await db.sync();
+  return syncedDB;
+};
+
 module.exports = {
-  PackageSchema,
-  AuthorSchema
+  syncDB,
+  Package,
+  Author,
+  PackageAuthorships
 }

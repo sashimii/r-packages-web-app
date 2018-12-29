@@ -1,0 +1,20 @@
+@import '../scss/framework';
+
+$block: 'author-badge';
+
+.#{$block} {
+  display: block;
+  float: left;
+  padding: 0.5rem 1rem;
+
+  &--grey-background {
+    background: #fdfdfd;
+  }
+  
+  &__text {
+    font-weight: 600;
+    font-size: 1.15rem;
+
+  }
+
+}

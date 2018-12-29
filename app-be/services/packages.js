@@ -1,24 +1,44 @@
-const { Package, Author } = require('../model/');
+const { Package, Author } = require('../model/schema');
 
-const getAuthors = (packages) => {
+const getPackagesByPage = async (limit, pageNum) => {
+  const data = await Package.findAndCountAll();
+  
+  let pages = Math.ceil(data.count / limit);
+  const offset = limit * (pageNum - 1);
 
-  const authors = [];
-  packages.forEach((package) => {
-    package.authors.forEach((author) => {
-      authors.push(author);
-    })
+  const packages = await Package.findAll({
+    limit,
+    offset,
+    include: {
+      model: Author,
+    }
   });
 
-  return authors;
+  return {
+    result: packages.map((package) => package.toJSON()),
+    count: data.count,
+    page: pageNum, 
+    pages
+  };
+
+};
+
+const getPackageById = async (id) => {
+  const package = await Package.findOne({
+    where: {
+      id: id
+    },
+    include: [
+      {
+        model: Author
+      }
+    ]
+  });
+  return package.toJSON();
 
 }
-
-const saveAllPackageDescriptions = async (packages) => {
- 
-}
-
-
 
 module.exports = {
-  saveAllPackageDescriptions
+  getPackageById,
+  getPackagesByPage
 }

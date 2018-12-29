@@ -1,0 +1,28 @@
+@import '../scss/framework';
+
+$block: 'button';
+
+.#{$block} {
+  display: block;
+  float: left;
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
+  border: none;
+  cursor: pointer;
+
+  &__text {
+    font-weight: 600;
+    font-size: 1.15rem;
+
+  }
+
+  &--orange {
+    background: $orange;
+    color: white;
+
+    &:disabled {
+      opacity: 0.5;
+    }
+  }
+
+}

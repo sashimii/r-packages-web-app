@@ -4,11 +4,9 @@ const zlib = require('zlib');
 const fs = require('fs');
 const tar = require('tar-stream');
 
-const { getPackageURL } = require('./utils');
+const { getPackageURL } = require('../utils');
 
 require('dotenv').config();
-
-const { saveAllPackageDescriptions } = require('../app-be/services/packages');
 
 const CRAN_REPO_BASE_URL = `https://cran.r-project.org/src/contrib/`;
 const CRAN_REPO_PACKAGES_URL = `${CRAN_REPO_BASE_URL}PACKAGES`;
@@ -132,8 +130,9 @@ const extractPackageDescription = (baseURL, package, version) => {
                 value
                   .replace(authorTypeRegex, '')
                   .trim()
-                  .split(' , ')
+                  .split(', ')
                   .map(name => {
+                    name = name.trim();
                     return { name };
                   });
               cleanedValue = authors;
@@ -149,6 +148,10 @@ const extractPackageDescription = (baseURL, package, version) => {
               };
             } else if (key === 'Date/Publication') {
               key = key.replace('/', '');
+              cleanedValue = value;
+            } else if (key === 'Package') {
+              key = 'name';
+              cleanedValue = value;
             } else {
               // Assumes value is inherently clean if the aforementioned keys are not associated with the value
               cleanedValue = value;
@@ -165,12 +168,14 @@ const extractPackageDescription = (baseURL, package, version) => {
            * Place Contact & Maintainer Emails in Author List
            */
           if(description.maintainer || description.contact) {
-            description.authors = description.authors.map(author => {
-                return  author.name === description.maintainer.name ||
-                        author.name === (description.contact && description.contact.name) ? 
-                            Object.assign(author, description.maintainer, description.contact)
-                          : author;
-            });
+            const assignAdditionalAuthorData = type => author => {
+              return  author.name === (description[type] && description[type].name) ? 
+                          Object.assign(author, description[type])
+                        : author;
+            }
+
+            description.authors = description.authors.map(assignAdditionalAuthorData('maintainer'));
+            description.authors = description.authors.map(assignAdditionalAuthorData('contact'));
           }
 
         resolve(description);
@@ -193,7 +198,9 @@ const extractPackageDescription = (baseURL, package, version) => {
 
 
 const fetchPackageDescriptions = async () => {
+  console.log('*** Fetching Package List');
   const packages = await fetchCleanPackageList();
+  console.log('*** Extracting Package Descriptions');
   const descriptions = packages.map(({Package, Version}) => {
     return extractPackageDescription(CRAN_REPO_BASE_URL, Package, Version)
   });
@@ -201,15 +208,11 @@ const fetchPackageDescriptions = async () => {
 }
 
 fetchPackageDescriptions().then((descriptions) => {
-  let countAuthors = 0;
-  descriptions.forEach((description) => {
-    if(description.maintainer) {
-      countAuthors++;
-    }
-  });
-  console.log(descriptions.length, countAuthors);
-  saveAllPackageDescriptions(descriptions);
-  fs.writeFile('DESCRIPTIONS.json', JSON.stringify(descriptions, null, 2), (err) => { if(err) throw err})
+  console.log('*** Package Descriptions Extracted & Converted to JSON')
+  
+  console.log('*** Writing to File System as package_descriptions.json');
+  fs.writeFile('package_descriptions.json', JSON.stringify(descriptions, null, 2), (err) => { if(err) throw err})
+  console.log('*** Saved as package_descriptions.json');
+ 
 })
 .catch(console.error);
-

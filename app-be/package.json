@@ -4,13 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "crawl": "cd ./crawler && node index.js && cd ..",
+    "server": "npm run crawl && node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
-    "mongoose": "^5.4.1"
+    "mongoose": "^5.4.1",
+    "pg": "^7.7.1",
+    "query-string": "^6.2.0",
+    "sequelize": "^4.42.0",
+    "tar-stream": "^1.6.2"
+  },
+  "devDependencies": {
+    "dotenv": "^6.2.0"
   }
 }
