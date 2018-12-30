@@ -3,18 +3,40 @@
 $block: 'author-badge';
 
 .#{$block} {
+  width: 100%;
+  max-width: 400px;
   display: block;
   float: left;
-  padding: 0.5rem 1rem;
+  // padding: 0.5rem 1rem;
 
-  &--grey-background {
-    background: #fdfdfd;
+  &--padded {
+    padding: 1rem;
+    margin: 1rem;
+  }
+  &--light-grey {
+    background: #f1f1f1;
   }
   
   &__text {
     font-weight: 600;
     font-size: 1.15rem;
 
+  }
+
+  &__name {
+    a {
+      text-decoration: none;
+    }
+    font-weight: 600;
+    font-size: 1.4rem;
+  }
+
+  &__email {
+    a {
+      text-decoration: none;
+    }
+    font-weight: 300;
+    font-size: 1.25rem;
   }
 
 }

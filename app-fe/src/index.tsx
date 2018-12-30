@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { HashRouter as Router } from 'react-router-dom';
-import './index.scss';
 import './scss/global.scss';
 
 import { Provider } from 'react-redux';

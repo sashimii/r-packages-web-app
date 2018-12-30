@@ -2189,7 +2189,8 @@
       "effects",
       "lattice"
     ],
-    "description": "Main functionality is to provide the algorithmic complexity for short strings, an approximation of the Kolmogorov Complexity of a short string using the coding theorem method (see ?acss). The database containing the complexity is provided in the data only package acss.data, this package provides functions accessing the data such as prob_random returning the posterior probability that a given string was produced by a random process. In addition, two traditional (but problematic) measures of complexity are also provided",
+    "description": "Main functionality is to provide the algorithmic complexity for short strings, an approximation of the Kolmogorov Complexity of a short string using the coding theorem method (see ?acss). The database containing the complexity is provided in the data only package acss.data, this package provides functions accessing the data such as prob_random returning the posterior probability that a given string was produced by a random process. In addition, two traditional (but problematic) measures of complexity are",
+    "    also provided": "entropy and change complexity.",
     "uRL": "http://complexitycalculator.com/methodology.html",
     "license": "GPL (>= 2)",
     "packaged": "2014-11-24 19:52:41 UTC; Henrik",
@@ -2604,6 +2605,7 @@
     "date": "2018-03-19",
     "authors@R": "c(person(\"Vincent\", \"Goulet\", role = c(\"cre\", \"aut\"), email = \"vincent.goulet@act.ulaval.ca\"), person(\"Sébastien\", \"Auclair\", role = \"ctb\"), person(\"Christophe\", \"Dutang\", role = \"aut\", email = \"christophe.dutang@univ-lemans.fr\"), person(\"Xavier\", \"Milhaud\", role = \"ctb\"), person(\"Tommy\", \"Ouellet\", role = \"ctb\"), person(\"Alexandre\", \"Parent\", role = \"ctb\"), person(\"Mathieu\", \"Pigeon\", role = \"aut\", email = \"pigeon.mathieu.2@uqam.ca\"), person(\"Louis-Philippe\", \"Pouliot\", role = \"ctb\"))",
     "description": "Functions and data sets for actuarial science",
+    "  frequency": "19 continuous heavy tailed distributions; the Poisson-inverse Gaussian discrete distribution; zero-truncated and zero-modified extensions of the standard discrete distributions. Support for phase-type distributions commonly used to compute ruin probabilities.",
     "depends": [
       "R (>= 3.3.0)"
     ],
@@ -3412,7 +3414,9 @@
       "isMaintainer": true,
       "isContact": true
     },
-    "description": "The functions defined in this program serve for implementing adaptive two-stage tests. Currently, four tests are included",
+    "description": "The functions defined in this program serve for implementing adaptive two-stage tests. Currently, four tests",
+    "        are included": "Bauer and Koehne (1994), Lehmacher and Wassmer (1999), Vandemeulebroecke (2006), and the horizontal conditional error function. User-defined tests can also be",
+    "        implemented. Reference": "Vandemeulebroecke, An investigation of two-stage tests, Statistica Sinica 2006.",
     "depends": [
       "lattice"
     ],
@@ -5298,7 +5302,8 @@
     "title": "Fast Clustering Using Adaptive Density Peak Detection",
     "version": "0.7",
     "authors@R": "c(person(\"Yifan (Ethan) Xu\", email = \"ethan.yifanxu@gmail.com\", role = c(\"aut\",\"cre\")), person(\"Xiao-Feng\", \"Wang\", email = \"wangx6@ccf.org\", role = \"aut\"))",
-    "description": "An implementation of ADPclust clustering procedures (Fast Clustering Using Adaptive Density Peak Detection). The work is built and improved upon the idea of Rodriguez and Laio (2014)<DOI:10.1126/science.1242072>. ADPclust clusters data by finding density peaks in a density-distance plot generated from local multivariate Gaussian density estimation. It includes an automatic centroids selection and parameter optimization algorithm, which finds the number of clusters and cluster centroids by comparing average silhouettes on a grid of testing clustering results; It also includes a user interactive algorithm that allows the user to manually selects cluster centroids from a two dimensional \"density-distance plot\". Here is the research article associated with this package",
+    "description": "An implementation of ADPclust clustering procedures (Fast Clustering Using Adaptive Density Peak Detection). The work is built and improved upon the idea of Rodriguez and Laio (2014)<DOI:10.1126/science.1242072>. ADPclust clusters data by finding density peaks in a density-distance plot generated from local multivariate Gaussian density estimation. It includes an automatic centroids selection and parameter optimization algorithm, which finds the number of clusters and cluster centroids by comparing average silhouettes on a grid of testing clustering results; It also includes a user interactive algorithm that allows the user to manually selects cluster centroids from a two dimensional \"density-distance plot\". Here is the",
+    "    research article associated with this package": "\"Wang, Xiao-Feng, and  Yifan Xu (2015)<DOI:10.1177/0962280215609948> Fast clustering using adaptive density peak detection.\" Statistical methods in medical research\". url",
     "depends": [
       "R (>= 3.0.0)",
       ""
@@ -5918,7 +5923,8 @@
     "date": "2017-05-18",
     "title": "Generalized Discrimination Score",
     "authors@R": "c(person(\"Andreas\", \"Weigel\", email=\"\", role = \"aut\"), person(\"MeteoSwiss\", \"\", role=c('cph')), person(\"Jonas\", \"Bhend\", email=\"jonas.bhend@meteoswiss.ch\", role = c('cre', 'ctb')))",
-    "description": "This is an implementation of the Generalized Discrimination Score (also known as Two Alternatives Forced Choice Score, 2AFC) for various representations of forecasts and verifying observations. The Generalized Discrimination Score is a generic forecast verification framework which can be applied to any of the following verification contexts",
+    "description": "This is an implementation of the Generalized Discrimination Score (also known as Two Alternatives Forced Choice Score, 2AFC) for various representations of forecasts and verifying observations. The Generalized Discrimination Score is a generic forecast verification framework which",
+    "    can be applied to any of the following verification contexts": "dichotomous,  polychotomous (ordinal and nominal), continuous, probabilistic, and ensemble. A comprehensive description of the Generalized Discrimination Score, including all equations used in this package, is provided by Mason and Weigel (2009) <doi:10.1175/MWR-D-10-05069.1>.",
     "license": "GPL-3",
     "roxygenNote": "6.0.1",
     "needsCompilation": "no",
@@ -6241,7 +6247,8 @@
         "name": "Anders Hedenström"
       }
     ],
-    "description": "Allows estimation and modelling of flight costs in animal (vertebrate) flight, implementing the aerodynamic power model described in Klein Heerenbrink et al. (2015) <doi:10.1098/rspa.2014.0952>. Taking inspiration from the program 'Flight', developed by Colin Pennycuick (Pennycuick (2008) \"Modelling the flying bird\". Amsterdam",
+    "description": "Allows estimation and modelling of flight costs in animal (vertebrate) flight, implementing the aerodynamic power model described in Klein Heerenbrink et al. (2015) <doi:10.1098/rspa.2014.0952>. Taking inspiration from the program 'Flight', developed by Colin Pennycuick (Pennycuick (2008) \"Modelling the flying",
+    "    bird\". Amsterdam": "Elsevier. ISBN 0-19-857721-4), flight performance is estimated based on basic morphological measurements such as body mass, wingspan and wing area. 'afpt' can be used to make predictions on how animals should adjust their flight behaviour and wingbeat kinematics to varying flight conditions.",
     "uRL": "https://github.com/MarcoKlH/afpt-r/",
     "bugReports": "https://github.com/MarcoKlH/afpt-r/issues",
     "depends": [
@@ -7950,7 +7957,8 @@
       "isMaintainer": true,
       "isContact": true
     },
-    "description": "Several cubic spline interpolation methods of H. Akima for irregular and regular gridded data are available through this package, both for the bivariate case (irregular data",
+    "description": "Several cubic spline interpolation methods of H. Akima for irregular and regular gridded data are available through this package, both for the bivariate case",
+    "  (irregular data": "ACM 761, regular data",
     "license": "ACM | file LICENSE",
     "depends": [
       "R (>= 2.0.0)"
@@ -8019,7 +8027,8 @@
       "isMaintainer": true,
       "isContact": true
     },
-    "description": "Adaptive K-means algorithm with various threshold settings. It support two distance metric",
+    "description": "Adaptive K-means algorithm with various threshold settings.",
+    "             It support two distance metric": " Euclidean distance, Cosine distance (1 - cosine similarity) In version 1.1, it contains one more threshold condition.",
     "license": "GPL-2",
     "lazyLoad": "yes",
     "packaged": "2014-05-08 17:28:08 UTC; kwjusu1",
@@ -8142,7 +8151,8 @@
     "date": "2018-09-12",
     "authors@R": "c(person(\"Jason\", \"Vander Heiden\", role=c(\"aut\", \"cre\"),  email=\"jason.vanderheiden@yale.edu\"), person(\"Namita\", \"Gupta\", role=c(\"aut\"), email=\"namita.gupta@yale.edu\"), person(\"Susanna\", \"Marquez\", role=c(\"ctb\"), email=\"susanna.marquez@yale.edu\"), person(\"Daniel\", \"Gadala-Maria\", role=c(\"ctb\"), email=\"daniel.gadala-maria@yale.edu\"), person(\"Ruoyi\", \"Jiang\", role=c(\"ctb\"), email=\"ruoyi.jiang@yale.edu\"), person(\"Nima\", \"Nouri\", role=c(\"ctb\"), email=\"nima.nouri@yale.edu\"), person(\"Steven\", \"Kleinstein\", role=c(\"aut\", \"cph\"), email=\"steven.kleinstein@yale.edu\"))",
     "title": "Immunoglobulin Clonal Lineage and Diversity Analysis",
-    "description": "Provides methods for high-throughput adaptive immune  receptor repertoire sequencing (AIRR-Seq; Rep-Seq) analysis. In particular, immunoglobulin (Ig) sequence lineage reconstruction, lineage topology analysis, diversity profiling, amino acid property analysis and gene usage. Citations",
+    "description": "Provides methods for high-throughput adaptive immune  receptor repertoire sequencing (AIRR-Seq; Rep-Seq) analysis. In particular, immunoglobulin (Ig) sequence lineage reconstruction, lineage topology analysis, diversity profiling, amino acid property analysis and gene usage.",
+    "    Citations": " Gupta and Vander Heiden, et al (2017) <doi:10.1093/bioinformatics/btv359>, Stern, Yaari and Vander Heiden, et al (2014) <doi:10.1126/scitranslmed.3008879>.",
     "license": "CC BY-SA 4.0",
     "uRL": "http://alakazam.readthedocs.org",
     "bugReports": "https://bitbucket.org/kleinstein/alakazam/issues",
@@ -9311,7 +9321,9 @@
       "isMaintainer": true,
       "isContact": true
     },
-    "description": "Download data from the Alpha Vantage API (<https://www.alphavantage.co/>). Alpha Vantage is a RESTful API which provides various financial data, including stock prices and technical indicators. There is documentation for the underlying API available here",
+    "description": "Download data from the Alpha Vantage API (<https://www.alphavantage.co/>). Alpha Vantage is a RESTful API which provides various financial data, including stock prices and technical indicators. There is documentation for the underlying API available",
+    "    here": "<https://www.alphavantage.co/documentation/>. To get access to this API,",
+    "    the user needs to first claim an API key": "<https://www.alphavantage.co/support/>.",
     "authors": [
       {
         "name": "Alex Thompson",
@@ -9816,7 +9828,8 @@
       "isMaintainer": true,
       "isContact": true
     },
-    "description": "Accompanies \"Designing experiments and  analyzing data",
+    "description": "Accompanies \"Designing experiments and ",
+    "    analyzing data": "A model comparison perspective\" (3rd ed.) by  Maxwell, Delaney, & Kelley (forthcoming from Routledge). Contains all of the data sets in the book's chapters and end-of-chapter exercises. Information about the book is available at <http://www.DesigningExperiments.com>.",
     "license": "GPL (>= 3)",
     "depends": [
       "R (>= 3.0.0)"
@@ -10073,7 +10086,8 @@
     "depends": [
       "R (>= 2.0.0)"
     ],
-    "description": "This package includes a set of pricing functions for American call options. The following cases are covered",
+    "description": "This package includes a set of pricing functions for",
+    "        American call options. The following cases are covered": "Pricing of an American call using the standard binomial approximation; Hedge parameters for an American call with a standard binomial tree; Binomial pricing of an American call with continuous payout from the underlying asset; Binomial pricing of an American call with an underlying stock that pays proportional dividends in discrete time; Pricing of an American call on futures using a binomial approximation; Pricing of a currency futures American call using a binomial approximation; Pricing of a perpetual American call. The user should kindly notice that this material is for educational purposes only. The codes are not optimized for computational efficiency as they are meant to represent standard cases of analytical and numerical solution.",
     "license": "GPL-3",
     "packaged": "2012-03-03 15:07:38 UTC; paolozagaglia",
     "repository": "CRAN",
@@ -10391,7 +10405,8 @@
     "title": "Automated Fitting of Moderated Nonlinear Factor Analysis Through the 'Mplus' Program",
     "version": "0.1",
     "authors@R": "c( person(\"Veronica\", \"Cole\", email = \"vcole@email.unc.edu\", role = c(\"aut\",\"cre\")), person(\"Nisha\", \"Gottfredson\", email = \"gottfredson@email.unc.edu\", role = c(\"aut\")), person(\"Michael\", \"Giordano\", email = \"mgiordano@email.unc.edu\", role = c(\"aut\")), person(\"Tim\", \"Janssen\", email = \"tim_janssen@brown.edu\", role = c(\"ctb\")))",
-    "description": "Automated generation, running, and interpretation of moderated nonlinear factor analysis models for obtaining scores from observed variables. This package creates 'Mplus' input files which may be run iteratively to test two different types of covariate effects on items",
+    "description": "Automated generation, running, and interpretation of moderated nonlinear factor analysis models for obtaining scores from observed variables. This package creates 'Mplus' input files which may be run iteratively",
+    "    to test two different types of covariate effects on items": " (1) latent variable impact (both mean and variance); and (2) differential item functioning. After sequentially testing for all effects, it also creates a final model by including all significant effects after adjusting for multiple comparisons. Finally, the package creates a scoring model which uses the final values of parameter estimates to generate latent variable scores.",
     "depends": [
       "R (>= 3.1.0)",
       ""
@@ -10850,7 +10865,8 @@
       "lmodel2"
     ],
     "rcppModules": "Test_mod, Trace_mod, CovarianceMatrix_mod, MCMCAlgorithm_mod, Model_mod, Parameter_mod, Genome_mod, Gene_mod, SequenceSummary_mod",
-    "description": "Is a collection of models to analyze genome scale codon data using a Bayesian framework. Provides visualization routines and checkpointing for model fittings. Currently published models to analyze gene data for selection on codon usage based on Ribosome Overhead Cost (ROC) are",
+    "description": "Is a collection of models to analyze genome scale codon data using a Bayesian framework. Provides visualization routines and checkpointing for model fittings. Currently published models to analyze gene data for selection on codon",
+    "        usage based on Ribosome Overhead Cost (ROC) are": "ROC (Gilchrist et al. (2015) <doi:10.1093/gbe/evv087>), and ROC with phi (Wallace & Drummond (2013) <doi:10.1093/molbev/mst051>). In addition 'AnaCoDa' contains three currently unpublished models. The FONSE (First order approximation On NonSense Error) model analyzes gene data for selection on codon usage against of nonsense error rates. The PA (PAusing time) and PANSE (PAusing time + NonSense Error) models use ribosome footprinting data to analyze estimate ribosome pausing times with and without nonsense error rate from ribosome footprinting data.",
     "license": "GPL (>= 2) Imports:",
     "linkingTo": "Rcpp",
     "lazyLoad": "yes",
@@ -11483,7 +11499,8 @@
       "isMaintainer": true,
       "isContact": true
     },
-    "description": "The package implements ANFIS Type 3 Takagi and Sugeno's fuzzy if-then rule network with the following features",
+    "description": "The package implements ANFIS Type 3 Takagi and Sugeno's fuzzy",
+    "    if-then rule network with the following features": "(1) Independent number of membership functions(MF) for each input, and also different MF extensible types. (2) Type 3 Takagi and Sugeno's fuzzy if-then rule (3) Full Rule combinations, e.g. 2 inputs 2 membership funtions -> 4 fuzzy rules (4) Hibrid learning, i.e. Descent Gradient for precedents and Least Squares Estimation for consequents (5) Multiple outputs.",
     "uRL": "http://www.bdmg.com.ar",
     "license": "GPL (>= 2)",
     "depends": [
@@ -12484,6 +12501,7 @@
     "version": "0.1.5",
     "authors@R": "c( person(\"Frederic\", \"Breant\", email = \"frederic.breant@rte-france.com\", role = c(\"aut\", \"cre\")), person(\"Victor\", \"Perrier\", email = \"victor.perrier@dreamRs.fr\", role = c(\"aut\")), person(\"Baptiste\", \"Seguinot\", email = \"baptiste.seguinot@rte-france.com\", role = \"ctb\"), person(\"Benoit\", \"Thieurmel\", email = \"benoit.thieurmel@datastorm.fr\", role = \"ctb\"), person(\"Titouan\", \"Robert\", email = \"titouan.robert@datastorm.fr\", role = \"ctb\"), person(\"Jalal-Edine\", \"Zawam\", email = \"jalal-edine.zawam@rte-france.com\", role = \"ctb\"), person(\"RTE\", role = \"cph\"))",
     "description": "Edit an 'Antares' simulation before running it ",
+    "    'Antares' is an open source power system generator, more information available here ": "<https://antares-simulator.org/>.",
     "license": "GPL (>= 2) | file LICENSE",
     "encoding": "UTF-8",
     "lazyData": "true",
@@ -12551,7 +12569,8 @@
       "isMaintainer": true,
       "isContact": true
     },
-    "description": " Process results generated by 'Antares', a powerful open source software developed by RTE (Réseau de Transport d’Électricité) to simulate and study electric power systems (more information about 'Antares' here",
+    "description": " Process results generated by 'Antares', a powerful open source software developed by RTE (Réseau de Transport d’Électricité) to simulate and study electric power systems (more information about",
+    "    'Antares' here": "<https://github.com/AntaresSimulatorTeam/Antares_Simulator>). You can see the results of several ANTARES studies here ",
     "uRL": "https://github.com/rte-antares-rpackage/antaresProcessing",
     "bugReports": "https://github.com/rte-antares-rpackage/antaresProcessing/issues",
     "license": "GPL (>= 2) | file LICENSE",
@@ -12615,7 +12634,8 @@
       "isMaintainer": true,
       "isContact": true
     },
-    "description": "Import, manipulate and explore results generated by 'Antares', a  powerful open source software developed by RTE (Réseau de Transport d’Électricité) to simulate and study electric power systems (more information about 'Antares' here ",
+    "description": "Import, manipulate and explore results generated by 'Antares', a  powerful open source software developed by RTE (Réseau de Transport d’Électricité) to simulate and study electric power systems",
+    "    (more information about 'Antares' here ": "<https://github.com/AntaresSimulatorTeam/Antares_Simulator>). You can see the results of several ANTARES studies here ",
     "uRL": "https://github.com/rte-antares-rpackage/antaresRead",
     "bugReports": "https://github.com/rte-antares-rpackage/antaresRead/issues",
     "license": "GPL (>= 2) | file LICENSE",
@@ -12682,7 +12702,9 @@
       "isMaintainer": true,
       "isContact": true
     },
-    "description": "Visualize results generated by Antares, a powerful open source software developed by RTE to simulate and study electric power systems (more information about Antares here",
+    "description": "Visualize results generated by Antares, a powerful open source software developed by RTE to simulate and study electric power systems",
+    "    (more information about Antares here": "<https://github.com/AntaresSimulatorTeam/Antares_Simulator>). This package provides functions that create interactive charts to help Antares users visually explore the results of their simulations.",
+    "    You can see the results of several ANTARES studies here ": "<http://bpnumerique.rte-france.com/>.",
     "uRL": "https://github.com/rte-antares-rpackage/antaresViz",
     "bugReports": "https://github.com/rte-antares-rpackage/antaresViz/issues",
     "license": "GPL (>= 2) | file LICENSE",
@@ -13323,7 +13345,8 @@
       "isMaintainer": true,
       "isContact": true
     },
-    "description": "'Aoristic' is one of the past tenses in Greek and represents an uncertain occurrence time.  Aoristic analysis suggested by Ratcliffe (2002) is a method to analyze events that do not have exact times of occurrence but have starting times and ending times.  For example, a property crime database (e.g., burglary) typically has a starting time and ending time of the crime that could have occurred.  Aoristic analysis allocates the probability of a crime incident occurring at every hour over a 24-hour period. The probability is aggregated over a study area to create an aoristic graph. Using crime incident data with lat/lon, DateTimeFrom, and DateTimeTo, functions in this package create a total of three (3) kml files and corresponding aoristic graphs",
+    "description": "'Aoristic' is one of the past tenses in Greek and represents an uncertain occurrence time.  Aoristic analysis suggested by Ratcliffe (2002) is a method to analyze events that do not have exact times of occurrence but have starting times and ending times.  For example, a property crime database (e.g., burglary) typically has a starting time and ending time of the crime that could have occurred.  Aoristic analysis allocates the probability of a crime incident occurring at every hour over a 24-hour period. The probability is aggregated over a study area to create an aoristic graph. Using crime incident data with lat/lon, DateTimeFrom, and DateTimeTo, functions in this package create a total of three (3) kml",
+    "    files and corresponding aoristic graphs": "1) density and contour; 2) grid count; and 3) shapefile boundary. (see also",
     "license": "GPL (>= 2)",
     "depends": [
       "ggplot2",
@@ -13982,7 +14005,8 @@
       "isMaintainer": true,
       "isContact": true
     },
-    "description": "Designed for the development and application of hidden Markov models and profile HMMs for biological sequence analysis. Contains functions for multiple and pairwise sequence alignment, model construction and parameter optimization, file import/export, implementation of the forward, backward and Viterbi algorithms for conditional sequence probabilities, tree-based sequence weighting, and sequence simulation. Features a wide variety of potential applications including database searching, gene-finding and annotation, phylogenetic analysis and sequence classification. Based on the models and algorithms described in Durbin et al (1998, ISBN",
+    "description": "Designed for the development and application of hidden Markov models and profile HMMs for biological sequence analysis. Contains functions for multiple and pairwise sequence alignment, model construction and parameter optimization, file import/export, implementation of the forward, backward and Viterbi algorithms for conditional sequence probabilities, tree-based sequence weighting, and sequence simulation. Features a wide variety of potential applications including database searching, gene-finding and annotation, phylogenetic analysis and sequence classification. Based on the models and algorithms described in Durbin et",
+    "    al (1998, ISBN": "9780521629713).",
     "license": "GPL-3",
     "uRL": "http://github.com/shaunpwilkinson/aphid",
     "bugReports": "http://github.com/shaunpwilkinson/aphid/issues",
@@ -15624,7 +15648,8 @@
     "type": "Package",
     "title": "Tools for Storing, Restoring and Searching for R Objects",
     "authors@R": "c( person(\"Przemyslaw\", \"Biecek\", role = c(\"aut\", \"cre\"), email = \"przemyslaw.biecek@gmail.com\"), person(\"Marcin\", \"Kosinski\", role = c(\"aut\"), email = \"m.p.kosinski@gmail.com\"), person(\"Witold\", \"Chodor\", role = c(\"ctb\"), email = \"witoldchodor@gmail.com\") )",
-    "description": "Data exploration and modelling is a process in which a lot of data artifacts are produced. Artifacts like",
+    "description": "Data exploration and modelling is a process in which a lot of data",
+    "    artifacts are produced. Artifacts like": "subsets, data aggregates, plots, statistical models, different versions of data sets and different versions of results. The more projects we work with the more artifacts are produced and the harder it is to manage these artifacts. Archivist helps to store and manage artifacts created in R. Archivist allows you to store selected artifacts as a binary files together with their metadata and relations. Archivist allows to share artifacts with others, either through shared folder or github. Archivist allows to look for already created artifacts by using it's class, name, date of the creation or other properties. Makes it easy to restore such artifacts. Archivist allows to check if new artifact is the exact copy that was produced some time ago. That might be useful either for testing or caching.",
     "repository": "CRAN",
     "license": "GPL-2",
     "lazyLoad": "yes",
@@ -16974,7 +16999,8 @@
   {
     "name": "ARPobservation",
     "title": "Tools for Simulating Direct Behavioral Observation Recording Procedures Based on Alternating Renewal Processes",
-    "description": "Tools for simulating data generated by direct observation recording. Behavior streams are simulated based on an alternating renewal process, given specified distributions of event durations and interim times. Different procedures for recording data can then be applied to the simulated behavior streams. Functions are provided for the following recording methods",
+    "description": "Tools for simulating data generated by direct observation recording. Behavior streams are simulated based on an alternating renewal process, given specified distributions of event durations and interim times. Different procedures for recording data can then be applied to the simulated behavior streams. Functions are provided for the following",
+    "    recording methods": "continuous duration recording, event counting, momentary time sampling, partial interval recording, and whole interval recording.",
     "version": "1.1",
     "maintainer": {
       "name": "James E. Pustejovsky",
@@ -17319,7 +17345,8 @@
         "name": "Pablo J. Villacorta <pjvi@decsai.ugr.es>"
       }
     ],
-    "description": "An implementation of the Aligned Rank Transform technique for factorial analysis (see references below for details) including models with missing terms (unsaturated factorial models). The function first computes a separate aligned ranked response variable for each effect of the user-specified model, and then runs a classic ANOVA on each of the aligned ranked responses. For further details, see Higgins, J. J. and Tashtoush, S. (1994). An aligned rank transform test for interaction. Nonlinear World 1 (2), pp. 201-211. Wobbrock, J.O., Findlater, L., Gergle, D. and Higgins,J.J. (2011). The Aligned Rank Transform for nonparametric factorial analyses using only ANOVA procedures. Proceedings of the ACM Conference on Human Factors in Computing Systems (CHI '11). New York",
+    "description": "An implementation of the Aligned Rank Transform technique for factorial analysis (see references below for details) including models with missing terms (unsaturated factorial models). The function first computes a separate aligned ranked response variable for each effect of the user-specified model, and then runs a classic ANOVA on each of the aligned ranked responses. For further details, see Higgins, J. J. and Tashtoush, S. (1994). An aligned rank transform test for interaction. Nonlinear World 1 (2), pp. 201-211. Wobbrock, J.O., Findlater, L., Gergle, D. and Higgins,J.J. (2011). The Aligned Rank Transform for nonparametric factorial analyses using only ANOVA procedures. Proceedings of the ACM Conference on",
+    "    Human Factors in Computing Systems (CHI '11). New York": "ACM Press, pp. 143-146. <doi:10.1145/1978942.1978963>.",
     "imports": [
       "stats",
       "car"
@@ -17845,7 +17872,8 @@
         "isContact": true
       }
     ],
-    "description": "Data sets are referred to in the text \"Applied Survival Analysis Using R\" by Dirk F. Moore, Springer, 2016, ISBN",
+    "description": "Data sets are referred to in the text \"Applied Survival Analysis Using R\"",
+    " by Dirk F. Moore, Springer, 2016, ISBN": "978-3-319-31243-9, <DOI:10.1007/978-3-319-31245-3>.",
     "maintainer": {
       "name": "Dirk F. Moore",
       "email": "dirkfmoore@gmail.com",
@@ -18181,7 +18209,9 @@
     "version": "2.2-7",
     "date": "2018-03-01",
     "title": "Methods for Adaptive Shrinkage, using Empirical Bayes",
-    "description": "The R package 'ashr' implements an Empirical Bayes approach for large-scale hypothesis testing and false discovery rate (FDR) estimation based on the methods proposed in M. Stephens, 2016, \"False discovery rates",
+    "description": "The R package 'ashr' implements an Empirical Bayes approach for large-scale hypothesis testing and false discovery rate (FDR) estimation based on the methods proposed in",
+    "    M. Stephens, 2016, \"False discovery rates": "a new deal\", <DOI:10.1093/biostatistics/kxw041>. These methods can be applied whenever two sets of summary statistics---estimated effects and standard errors---are available, just as 'qvalue' can be applied to previously computed p-values. Two main interfaces are",
+    "    provided": "ash(), which is more user-friendly; and ash.workhorse(), which has more options and is geared toward advanced users. The ash() and ash.workhorse() also provides a flexible modeling interface that can accomodate a variety of likelihoods (e.g., normal, Poisson) and mixture priors (e.g., uniform, normal).",
     "depends": [
       "R (>= 3.1.0)"
     ],
@@ -18748,7 +18778,8 @@
     ],
     "enhances": "asreml",
     "systemRequirements": "asreml-R 3.x",
-    "description": "Assists in automating the testing of terms in mixed models when 'asreml' is used  to fit the models. The content falls into the following natural groupings",
+    "description": "Assists in automating the testing of terms in mixed models when 'asreml' is used ",
+    "  to fit the models. The content falls into the following natural groupings": "(i) Data, (ii) Object  manipulation functions, (iii) Model modification functions, (iv) Model testing functions, (v) Model diagnostics functions, (vi) Prediction production and presentation functions, (vii) Response transformation functions, and (viii) Miscellaneous functions. A history of the fitting of a sequence of models is kept in a data frame. Procedures are available for choosing models that conform to the hierarchy or marginality principle and for displaying predictions for significant terms in tables and graphs. The package 'asreml' provides a computationally efficient algorithm for fitting mixed models using Residual Maximum Likelihood. It can be purchased from 'VSNi' <http://www.vsni.co.uk/> as 'asreml-R', who will supply a zip file for local installation/updating.",
     "license": "GPL (>= 2)",
     "uRL": "http://chris.brien.name",
     "needsCompilation": "no",
@@ -21131,7 +21162,8 @@
       "isContact": true
     },
     "uRL": "https://github.com/axibase/atsd-api-r/",
-    "description": "Provides functions for retrieving time-series and related meta-data such as entities, metrics, and tags from the Axibase Time-Series Database (ATSD). ATSD is a non-relational clustered database used for storing performance measurements from IT infrastructure resources",
+    "description": "Provides functions for retrieving time-series and related meta-data such as entities, metrics, and tags from the Axibase Time-Series Database (ATSD). ATSD is a non-relational clustered database used for storing performance measurements from IT infrastructure",
+    "    resources": "servers, network devices, storage systems, and applications.",
     "depends": [
       "R (>= 3.1.2)"
     ],

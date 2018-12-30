@@ -5,7 +5,10 @@ import { withRouter } from 'react-router';
 import { fetchAuthor } from '../redux/actions/authors';
 
 import { AuthorType } from '../interfaces/author';
+import { AuthorBadge } from '../ui/AuthorBadge';
+import { FlexList } from '../ui/FlexList';
 import { PackageCard } from '../ui/PackageCard';
+import './Author.scss';
 
 interface AuthorProps {
   author: AuthorType;
@@ -38,16 +41,17 @@ class Author extends React.Component<AuthorProps, any> {
   render() {
     const { name, email, packages } = this.props.author;
     return name ? (
-      <section>
-        <h1>{name}</h1>
+      <section className="author">
+        <h2 className="author__section-title">Author</h2>
+        <AuthorBadge {...this.props.author} showPackages />
+        <h2 className="author__section-title">Packages Authored</h2>
         {
-          email && (
-            <p>Email: <a href={`mailto:${email}`}>{email}</a></p>
-          )
-        }
-        <h2>Packages Authored:</h2>
-        {
-          packages.map((rPackage, index) => <PackageCard key={`packages-authored-${index}`} {...rPackage}/>)
+          packages &&
+          <FlexList
+            listItems={packages}
+            componentToMap={props => <PackageCard {...props} truncate />
+            }
+          />
         }
       </section>
     ) : null;

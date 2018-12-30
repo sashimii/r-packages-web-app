@@ -1,4 +1,4 @@
-# Map & Directions
+# Front end 
 
 ## Choices
 
@@ -11,9 +11,10 @@
 
 ## Installation 
 
+Make sure you first boot up the back end.
+
 1. Run `npm install`
-2. Assign your Google Maps API Key to `const API_KEY` in  `src/lib/GoogleMapsAPI.ts`. You need to make sure Places API is enabled for autocomplete to work.
-3. Run `npm start`. 
-4. Go to `http://localhost:3000` to take a look at the app.
+3. Run `npm run dev`. 
+4. Go to `http://localhost:8080` to take a look at the front end.
 
 

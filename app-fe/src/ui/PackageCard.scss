@@ -6,7 +6,17 @@ $block: 'package-card';
   width: 100%;
   display: block;
   float: left;
-  // padding: 2rem;
+  margin: 1rem 0;
+
+  &--padded {
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  &--light-grey {
+    background: #f1f1f1;
+    float: left;
+  }
 
   h2, h3, p {
     width: 100%;
@@ -18,10 +28,6 @@ $block: 'package-card';
     width: 100%;
     float: left;
     padding: 1rem 0;
-  }
-  &--padded {
-    padding: 2rem;
-    float: left;
   }
   
   &__name {
@@ -37,6 +43,6 @@ $block: 'package-card';
     font-weight: 300;
     font-size: 1rem;
   }
-
+  
 
 }

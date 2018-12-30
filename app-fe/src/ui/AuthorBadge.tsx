@@ -1,33 +1,38 @@
 import * as React from 'react';
-import './AuthorBadge.scss';
 
 import { Link } from 'react-router-dom';
 import { AuthorType } from '../interfaces/author';
-import { PackageCard } from './PackageCard';
 
-interface AuthorBadgeProps extends AuthorType {}
+import './AuthorBadge.scss';
+
+interface AuthorBadgeProps extends AuthorType {
+  showPackages?: boolean;
+}
 
 export const AuthorBadge: React.SFC<AuthorBadgeProps> = ({
   id,
   name,
   email,
   packages,
+  showPackages,
 }) => {
   return (
-    <div className="author-badge author-badge__grey-background">
-      <h4>
-        <Link to={`/author/${id}`}>
-          {name}
-        </Link>
-      </h4>
-
-      <p>{ email }</p>
-      <p>
+    <div className="author-badge">
+      <div className="author-badge--padded author-badge--light-grey">
+        <h4 className="author-badge__name">
+          <Link to={`/author/${id}`}>
+            {name}
+          </Link>
+        </h4>
         {
-          packages &&
-          packages.map((rPackage, index) => <PackageCard key={`package-card-${index}`} {...rPackage} /> )
+          email && (
+            <>
+              <h5 className="author-badge__email">Email:</h5>
+              <a href={`mailto:${email}`}> { email }</a>
+            </>
+          )
         }
-      </p>
+      </div>
     </div>
   );
 };

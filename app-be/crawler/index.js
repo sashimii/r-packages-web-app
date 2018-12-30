@@ -22,6 +22,21 @@ const fetchRawPackageList = async () => {
   return res.data;
 } 
 
+const reduceRemoveWhitespace = (acc, currentItem, index) => {
+  // Check if line contains the start of a field
+  if(currentItem.indexOf(': ') > -1) {
+    return [ ...acc, currentItem ];
+  }
+  
+  let previousItem = acc.length > 0 && acc[acc.length - 1]; // Get the previous item
+
+  // Concatenates lines with no fields to a line with a field.
+  // Also does away with the lingering empty string
+  acc[acc.length - 1] = previousItem + ` ${currentItem.trim()}`; 
+  return acc;
+}
+
+
 const fetchCleanPackageList = async () => {
   const rawPackageList = await fetchRawPackageList();
   const cleanPackageList = 
@@ -30,19 +45,7 @@ const fetchCleanPackageList = async () => {
     .slice(0, PACKAGE_LIMIT)       // Establishing limit
     .join(PACKAGE_LIST_DELIMITER)  // Join to create a smaller list
     .split('\n')
-    .reduce((acc, currentItem, index) => {
-      // Check if line contains the start of a field
-      if(currentItem.indexOf(': ') > -1) {
-        return [ ...acc, currentItem ];
-      }
-      
-      let previousItem = acc.length > 0 && acc[acc.length - 1]; // Get the previous item
-
-      // Concatenates lines with no fields to a line with a field.
-      // Also does away with the lingering empty string
-      acc[acc.length - 1] = previousItem + ` ${currentItem.trim()}`; 
-      return acc;
-    }, [])
+    .reduce(reduceRemoveWhitespace, [])
     .reduce((acc, currentItem, index) => {
 
       const [ key, value ] = currentItem.split(': ');
@@ -76,10 +79,8 @@ const extractPackageDescription = (baseURL, package, version) => {
   
     extract.on('entry', function(header, stream, cb) {
         stream.on('data', function(chunk) {
-          // console.log(header.name);
         if (header.name == `${package}/DESCRIPTION`)
           data += chunk;
-          // console.log('data'. data);
         });
   
         stream.on('end', function() {
@@ -95,21 +96,7 @@ const extractPackageDescription = (baseURL, package, version) => {
         data
           .split('\n')
           // Get Rid of Tab space and append to prior line
-          .reduce((acc, currentItem, index) => {
-            // Check if line contains the start of a field, and that the first character is not whitespace
-            if(currentItem.indexOf(': ') > -1 && currentItem.charAt(0) !== ' ') {
-              return [ ...acc, currentItem ];
-            }
-            
-            let previousItem = acc.length > 0 && acc[acc.length - 1]; // Get the previous item
-    
-            // Concatenates lines with no fields to a line with a field.
-            // Also does away with the lingering empty white space
-            acc[acc.length - 1] = previousItem + ` ${currentItem.trim()}`; 
-
-            return acc;
-
-          }, [])
+          .reduce(reduceRemoveWhitespace, [])
           // Converts to JS Object:
           /** 
            *  Converts to JS Object:
@@ -159,7 +146,6 @@ const extractPackageDescription = (baseURL, package, version) => {
 
             // convert key to camelCase at the end of parsing
             key = key.charAt(0).toLowerCase() + key.slice(1);
-            // console.log('Key', key);
             return Object.assign(acc, { [key]: cleanedValue });
 
           }, {})

@@ -1,0 +1,33 @@
+@import '../scss/framework';
+
+$block: 'pagination';
+
+.#{$block} {
+  float: left;
+  width: 100%;
+  margin: 3rem 0;
+
+  &--selected {
+    &-true {
+      background: $grey-light;
+    }
+  }
+ 
+  &__list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    float: left;
+  }
+  &__number {
+    font-weight: 600;
+    font-size: 1.15rem;
+    padding: 0.5rem 1rem;
+    float: left;
+    a {
+      text-decoration: none;
+    }
+  }
+
+}

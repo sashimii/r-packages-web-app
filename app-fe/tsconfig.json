@@ -14,8 +14,7 @@
     ],
     "types": [
       "jest",
-      "core-js",
-      "react-css-modules"
+      "core-js"
     ]
   },
   "include": [

@@ -1,0 +1,17 @@
+@import '../scss/framework';
+
+$block: 'flex-list';
+
+.#{$block} {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    align-items: normal;
+  }
+
+  &__list-item {
+    flex: 1 0 21%;
+  }
+}

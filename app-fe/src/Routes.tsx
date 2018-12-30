@@ -4,17 +4,19 @@ import Author from './views/Author';
 import Package from './views/Package';
 import PackageList from './views/PackageList';
 
-import './App.scss';
+import './Routes.scss';
 
 interface RoutesProps {}
 
 export const Routes: React.SFC<RoutesProps> = () => {
   return (
-    <div>
-      <nav className="navigation">
-        <Link to="/">
-          <h1 className="navigation__site-title">R Packages</h1>
-        </Link>
+    <div className="routes">
+      <nav>
+        <h1 className="routes__site-title">
+          <Link to="/">
+            R Packages
+          </Link>
+        </h1>
       </nav>
       <Switch>
         <Route

@@ -6,7 +6,10 @@ import { fetchPackage } from '../redux/actions/packages';
 
 import { PackageType } from '../interfaces/package';
 import { AuthorBadge } from '../ui/AuthorBadge';
+import { FlexList } from '../ui/FlexList';
 import { PackageCard } from '../ui/PackageCard';
+
+import './Package.scss';
 
 interface PackageProps extends PackageType {
   package: PackageType;
@@ -39,13 +42,22 @@ class Package extends React.Component<PackageProps, any> {
   render() {
     const { authors } = this.props.package;
     return this.props.package ? (
-      <section>
+      <section className="package">
+        <h2 className="package__section-title">Package:</h2>
         <PackageCard {...this.props.package}/>
-        <h2>Package Authors:</h2>
+        <h2 className="package__section-title">Package Authors:</h2>
+
         {
           authors &&
-          authors.map((author, index) => <AuthorBadge key={`package-authors-${index}`} {...author}/>)
+          <FlexList
+            listItems={authors}
+            componentToMap={props => <AuthorBadge {...props} />}
+          />
         }
+        {/* {
+          authors &&
+          authors.map((author, index) => <AuthorBadge key={`package-authors-${index}`} {...author}/>)
+        } */}
       </section>
       // <PackageCard {...this.props.package}/>
     ) : null;

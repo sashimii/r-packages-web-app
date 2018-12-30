@@ -2,8 +2,6 @@ const path = require('path');
 
 var MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
-const autoprefixer = require('autoprefixer');
 
 const SRC_DIR = path.resolve(__dirname, './src/');
 const DIST_DIR = path.resolve(__dirname, './dist/')
@@ -18,11 +16,6 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 
 
 module.exports = {
-
-  // devServer: {
-  //   contentBase: path.resolve(__dirname, './dist'),
-  //   publicPath: '/',
-  // },
 
   entry: {
     main: SRC_DIR + '/index.tsx',
@@ -89,10 +82,6 @@ module.exports = {
       },
     ]
   },
-  // externals: {
-  //   "react": "React",
-  //   "react-dom": "ReactDOM"
-  // },
   plugins: [
     HtmlWebpackPluginConfig,
     // new HtmlWebpackHarddiskPlugin(),

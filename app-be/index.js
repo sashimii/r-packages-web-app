@@ -27,18 +27,6 @@ app.use(function(req, res, next) {
 });
 
 
-/**
- * 
- * Short Cut
- * 
- * For simplicity of implementation, I'm using
- * author id & package id as the query parameters.
- * 
- * Ideally, you would want to search by name for more
- * RESTful URLs.
- * 
- */
-
 // List of All Packages
 app.get('/api/packages/', async (req, res) => {
   // Pagination
@@ -53,6 +41,19 @@ app.get('/api/packages/', async (req, res) => {
     }    
   }
 });
+
+
+/**
+ * 
+ * Short Cut
+ * 
+ * For simplicity of implementation, I'm using
+ * author id & package id as the parameters.
+ * 
+ * Ideally, you would want to search by name for more
+ * RESTful URLs.
+ * 
+ */
 
 // Get Single Package
 app.get('/api/package/:id', async (req, res) => {
