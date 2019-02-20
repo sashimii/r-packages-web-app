@@ -1,24 +1,48 @@
-const express = require('express');
-const { getAuthorInfo } = require('./services/authors');
-const { getPackageById, getPackagesByPage } = require('./services/packages');
-const app = express();
+require('dotenv').config();
 
-const { populateDatabase } = require('./services/populate');
-const { getUniqueAuthorsList } = require('./utils');
-const packages = require('./crawler/package_descriptions.json');
-const authors = getUniqueAuthorsList(packages);
+const app = require('express')();
+const server = require('http').createServer(app);
+const io = require('socket.io')(server);
 
+const redisClient = require('./redis');
+const session = require('express-session');
+const SessionStore = require('connect-redis')(session);
 
-/**
- * 
- * Short Cut
- * 
- * Ideally the front end for a simple SPA would be served via a `/static` folder
- * but there wasn't any time to implement a Webpack build script for the front end,
- * and for now this solution requires the app served on localhost:8080 to retrieve
- * data from localhost:3000 
- * 
- */
+const bodyParser = require('body-parser');
+
+const uuid = require('uuid/v4');
+
+const { createMockData } = require('./model/mockdata');
+const { getEventByUrl } = require('./services/events');
+
+const {
+  getTotalTicketsReserved,
+  reserveForSession,
+  removeReservedTickets
+} = require('./services/ticketCache');
+
+const FIFTEEN_MINUTES = 900000;
+
+const checkoutSession = session({
+  store: new SessionStore({
+    client: redisClient,
+  }),
+  genid: (req) => {
+    return uuid();
+  },
+  secret: process.env.COOKIE_SECRET,
+  cookie: {
+    secure: 'auto',
+    maxAge: FIFTEEN_MINUTES,
+  },
+});
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
+
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -27,56 +51,78 @@ app.use(function(req, res, next) {
 });
 
 
-// List of All Packages
-app.get('/api/packages/', async (req, res) => {
-  // Pagination
-  const page = req.query.page;
-  const limit = req.query.limit;
-  if (page && limit) {
-    try {
-      const data = await getPackagesByPage(limit, page);
-      res.status(200).json(data);
-    } catch (e) {
-      res.sendStatus(404);
-    }    
+app.get('/api/events/:eventUrl', async (req, res) => {
+  try {
+    const url = req.params.eventUrl;
+    const eventInfo = await getEventByUrl(url);
+    const eventWithUpdatedTickets = await removeReservedTickets(eventInfo);
+    res.status(200).send(eventWithUpdatedTickets);
+  } catch (e) {
+    console.error(e);
+    res.sendStatus(404);
   }
 });
 
 
-/**
- * 
- * Short Cut
- * 
- * For simplicity of implementation, I'm using
- * author id & package id as the parameters.
- * 
- * Ideally, you would want to search by name for more
- * RESTful URLs.
- * 
- */
+app.get('/redis', function (req, res) {
+  // const jobs = [];
+  redisClient.keys('*', function (err, keys) {
+      if (err) return console.log(err);
+      if(keys){
+        console.log(keys);
+        redisClient.get(keys[0], (err, val) => {
+          res.send({
+            key: keys[0],
+            val
+          });
+        });
+      }
+  });
+});
 
-// Get Single Package
-app.get('/api/package/:id', async (req, res) => {
+
+app.get('/api/clear-cache', async (req, res) => {
+  await redisClient.keys('*', async (err, keys) => {
+    if (err) return console.log(err);
+    await keys.forEach(async (key) => {
+      await redisClient.delAsync(key);
+    });
+  });
+  res.send('Shit deleted yo');
+});
+
+
+app.get('/api/checkout', checkoutSession, async (req, res) => {
+  res.send({ session: req.session, id: req.sessionID });
+});
+
+
+app.post('/api/checkout', checkoutSession, async (req, res) => {
   try {
-    const id = req.params.id;
-    const packageInfo = await getPackageById(id);
-    res.status(200).send(packageInfo);
+    await reserveForSession(req.sessionID, req.body.event, req.body.tickets);
+    // const newSessionInfo = JSON.parse(await redisClient.getAsync(sessionKey));
+    const _reservedTickets = Object.keys(req.body.tickets).map(async (ticket) => {
+      return { [ticket]: await getTotalTicketsReserved(req.body.event, ticket) }
+    })
+    const reservedTickets = await Promise.all(_reservedTickets); 
+    console.log( reservedTickets );
+    res.send({reservedTickets});
+  } catch (e) {
+    console.log(e);
+    res.sendStatus(404);
+  }
+});
+
+
+app.post('/api/checkout/purchase', checkoutSession, async (req, res) => {
+  try {
+    
   } catch (e) {
     res.sendStatus(404);
   }
 });
 
-// Get Author Information
-app.get('/api/author/:id',  async (req, res) => {
-  try {
-    const id = req.params.id;
-    const authorInfo = await getAuthorInfo(id);
-    res.status(200).send(authorInfo);
-  } catch (e) {
-    res.sendStatus(404);
-  }
-  
-});
+
 
 
 /**
@@ -97,10 +143,13 @@ app.get('/api/author/:id',  async (req, res) => {
  * 
  */
 
-
-populateDatabase(packages, authors)
-  .then(() => {
-    app.listen(3000, () => {
-      console.log('App Listening on Port 3000')
-    });
+const bootServer = async () => {
+  
+  await createMockData();
+  
+  server.listen(3000, () => {
+    console.log('App Listening on Port 3000')
   });
+};
+
+bootServer();

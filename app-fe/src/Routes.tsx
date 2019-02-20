@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { Link, Redirect, Route, Switch } from 'react-router-dom';
-import Author from './views/Author';
-import Package from './views/Package';
-import PackageList from './views/PackageList';
+import { Link, Route, Switch } from 'react-router-dom';
 
 import './Routes.scss';
+import Event from './views/Event';
 
 interface RoutesProps {}
 
@@ -21,10 +19,10 @@ export const Routes: React.SFC<RoutesProps> = () => {
       <Switch>
         <Route
           exact
-          path="/package-list"
-          component={PackageList}
+          path="/:eventName"
+          component={Event}
         />
-        <Route exact path="/">
+        {/* <Route exact path="/">
           <Redirect to="/package-list" />
         </Route>
         <Route
@@ -36,7 +34,7 @@ export const Routes: React.SFC<RoutesProps> = () => {
           exact
           path="/author/:authorId"
           component={Author}
-        />
+        /> */}
       </Switch>
     </div>
   );
